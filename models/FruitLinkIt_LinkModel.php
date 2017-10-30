@@ -28,6 +28,7 @@ class FruitLinkIt_LinkModel extends BaseModel
             'defaultText' => array(AttributeType::String, 'default' => false),
             'customText' => array(AttributeType::String, 'default' => false),
             'target' => array(AttributeType::String, 'default' => false),
+            'locale' => array(AttributeType::String),
         );
     }
 
@@ -223,7 +224,8 @@ class FruitLinkIt_LinkModel extends BaseModel
         if(!$this->_entry)
         {
             $id = is_array($this->value) ? $this->value[0] : false;
-            if( $id && $entry = craft()->entries->getEntryById($id) )
+            $locale = isset($this->locale) ? $this->locale : null;
+            if( $id && $entry = craft()->entries->getEntryById($id, $locale) )
             {
 
                 $this->_entry = $entry;
@@ -243,7 +245,8 @@ class FruitLinkIt_LinkModel extends BaseModel
         if(!$this->_asset)
         {
             $id = is_array($this->value) ? $this->value[0] : false;
-            if( $id && $asset = craft()->assets->getFileById($id) )
+            $locale = isset($this->locale) ? $this->locale : null;
+            if( $id && $asset = craft()->assets->getFileById($id, $locale) )
             {
                 $this->_asset = $asset;
             }
@@ -262,7 +265,8 @@ class FruitLinkIt_LinkModel extends BaseModel
         if(!$this->_category)
         {
             $id = is_array($this->value) ? $this->value[0] : false;
-            if( $id && $category = craft()->categories->getCategoryById($id) )
+            $locale = isset($this->locale) ? $this->locale : null;
+            if( $id && $category = craft()->categories->getCategoryById($id, $locale) )
             {
                 $this->_category = $category;
             }
@@ -280,7 +284,8 @@ class FruitLinkIt_LinkModel extends BaseModel
         if(!$this->_product)
         {
             $id = is_array($this->value) ? $this->value[0] : false;
-            if( $id && $product = craft()->commerce_products->getProductById($id) )
+            $locale = isset($this->locale) ? $this->locale : null;
+            if( $id && $product = craft()->commerce_products->getProductById($id, $locale) )
             {
 
                 $this->_product = $product;
