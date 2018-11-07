@@ -225,9 +225,9 @@ class FruitLinkIt_LinkModel extends BaseModel
         {
             $id = is_array($this->value) ? $this->value[0] : false;
             $locale = isset($this->locale) ? $this->locale : null;
+
             if( $id && $entry = craft()->entries->getEntryById($id, $locale) )
             {
-
                 $this->_entry = $entry;
             }
         }
@@ -319,6 +319,7 @@ class FruitLinkIt_LinkModel extends BaseModel
         }
         return isset($this->_thirdPartyTypes[$type]) ? $this->_thirdPartyTypes[$type] : null;
     }
+
 
     public function validate($attributes = null, $clearErrors = true)
     {

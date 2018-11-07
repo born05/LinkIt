@@ -51,7 +51,10 @@ class FruitLinkItFieldType extends BaseFieldType
         {
             $types = $types + $availableTypes;
         }
-        
+
+        // current selected CP locale
+        $locale = isset($this->element->locale) ? $this->element->locale : craft()->language;
+
         // current selected CP locale
         $locale = isset($this->element->locale) ? $this->element->locale : craft()->language;
 
@@ -260,7 +263,6 @@ class FruitLinkItFieldType extends BaseFieldType
             $link->defaultText = $settings->defaultText;
             $link->target = isset($value['target']) ? ($value['target'] ? '_blank' : false) : false;
             $link->locale = isset($this->element->locale) ? $this->element->locale : craft()->language;
-
 
             return $link;
         }
